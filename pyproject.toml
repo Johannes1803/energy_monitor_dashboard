@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "energy_insights_dashboard"
+version = "0.1.0"
+description = ""
+authors = ["Johannes Birk <Johannes.Birk11@web.de>"]
+readme = "documentation/source/index.rst"
+packages = [{include = "energy_insights_dashboard"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+numpy = "^1.26.1"
+pandas = "^2.1.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "22.*"
+flake8 = "6.*"
+pre-commit = "3.*"
+sphinx = "*"
+sphinx-autoapi = "*"
+sphinx-rtd-theme = "*"
+PyYAML = "^6.0.1"
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120

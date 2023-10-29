@@ -1,10 +1,9 @@
 """Example main.py relying on class and class audit logger."""
-import logging.config
 import atexit
+import logging.config
 import sys
 
 import yaml
-
 from named_loggers_base import AuditedClass
 
 

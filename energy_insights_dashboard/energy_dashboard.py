@@ -5,7 +5,6 @@ Here's our first attempt at using data to create a table:
 
 import pandas as pd
 import plotly.express as px
-import pyarrow as pa
 import streamlit as st
 
 from definitions import ROOT_DIR

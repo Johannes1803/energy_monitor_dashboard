@@ -13,3 +13,15 @@ class ToDateTimeTransformer(ColumnTransformer):
         label: str,
     ) -> pd.Series:
         return pd.to_datetime(series, format=self.format_str)
+
+
+class MWHToPetaJouleTransformer(ColumnTransformer):
+    def __init__(self, columns, result_columns=None, drop=True, suffix=None, **kwargs):
+        super().__init__(columns, result_columns, drop, suffix, **kwargs)
+
+    def _col_transform(
+        self,
+        series: pd.Series,
+        label: str,
+    ) -> pd.Series:
+        return (series * 3.6 * 10e09) / 10e15

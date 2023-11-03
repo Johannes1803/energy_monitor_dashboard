@@ -24,6 +24,7 @@ color_discrete_map_energy = {
     "Braunkohle": "brown",
     "Erdgas": "blue",
     "Erdgas, Erdölgas": "blue",
+    "Gase": "blue",
     "Erneuerbare Energien": "green",
     "Mineralöl": "black",
     "Mineralöle": "black",

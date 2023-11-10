@@ -60,6 +60,12 @@ fig_energy_sector_year = px.bar(
 )
 fig_energy_sector_year.update_layout(german_layout)
 st.plotly_chart(fig_energy_sector_year)
+st.write(
+    "Es ist ein Zugewinn an erneuerbaren Energien (dunkelgrün) sowie ein leichter "
+    "Rückgang des Gesamtenergieverbrauchs in den letzten Jahren zu beobachten. "
+    "Die Geschwindigkeit des Zubaus ist jedoch bisher nicht ausreichend, um "
+    "das Pariser Klimaabkommen einzuhalten."
+)
 
 st.header("Quellen:")
 st.write(

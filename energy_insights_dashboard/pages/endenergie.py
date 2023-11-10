@@ -14,6 +14,9 @@ st.header("Endenergie")
 st.write(
     "Endenergie bezeichnet die Energie, die dem Verbraucher nach (verlustreicher) "
     "Umwandlung der Primärenergieträger und Transport zur Verfügung steht [1]."
+    "Der Endenergieverbrauch lässt sich nach Sektoren aufschlüßeln. Dies ist "
+    "hilfreich, um Sektoren zu identifizieren, die im besonderen Maße zur Emission "
+    "von Treibhausgasen beitragen."
 )
 
 df_ak_energy = pd.read_pickle(PATH_DF_AK_ENERGY_SEC)
@@ -33,6 +36,25 @@ st.plotly_chart(fig_sectors)
 st.write(
     "Die Sektoren Verkehr, Privathaushalte und Industrie haben mit jeweils knapp 30% "
     "ähnliche Anteile am Endenergieverbrauch [2]."
+)
+
+df_energy_carrier = df_ak_energy[2022].groupby("Energieträger").sum()
+df_energy_carrier = df_energy_carrier.reset_index()
+df_energy_carrier.rename({2022: "PJ"}, axis=1, inplace=True)
+
+fig_energy_carriers = px.pie(
+    df_energy_carrier,
+    values="PJ",
+    names="Energieträger",
+    color="Energieträger",
+    color_discrete_map=color_discrete_map_energy,
+    title="Anteil am Endenergieverbrauch nach Energieträger 2022 <br><sup>Quelle: AG Energiebilanzen e. V.</sup>",
+)
+st.plotly_chart(fig_energy_carriers)
+st.write(
+    "Erklärung zu Strom: Hier ist Strom aus erneuerbaren Energien inkludiert, im Jahr 2022 betrug der Anteil "
+    "der Erneuerbaren am Strommix 46,2%. 'Erneuerbare Energien' bezieht sich hier z.B. auf Geothermie, Solarthermie, "
+    "Biomasse und Wärmepumpen."
 )
 
 

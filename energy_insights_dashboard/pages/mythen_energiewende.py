@@ -21,48 +21,15 @@ color_map = {
     "Wasserkraft": "#2E91E5",
 }
 
-
-st.title("Betrachtungen zur Volatilität der Erneuerbaren Energien")
-# st.write(
-#     """Zur Erreichung der Klimaziele ist es unerläßlich, dass die Sektoren Verkehr,
-#     Industrie, Dienstleistungen/Gewerbe sowie Haushalte auf erneuerbare Energien
-#     umsteigen. Grüner Wasserstoff und Co. werden aufgrund geringer Energieeffizenz
-#     auf absehbare Zeit teuer bleiben und damit in Bereichen zum Einsatz kommen, in
-#     denen es keine Alternativen gibt. Dazu zählen z.B. Industrie, Flug-, Schiff- und
-#     Schwerlastverkehr. Aufgrund des wesentlich höheren Wirkungsgrades sollte wo möglich
-#     elektrifiziert werden.
-#     Dies führt dazu, dass der Strombedarf künftig ansteigen wird. Die größten Ausbaupotenziale
-#     für erneuerbare Energien besitzen Windkraft und Photovoltaik. Diese Quellen sind jedoch volatil,
-#     d.h. sie sind nur verfügbar, wenn der Wind weht bzw. die Sonne scheint. Dieser Artikel
-#     beschäftigt sich mit der Frage, wie der erzeugte elektrische Strom schwankte im Jahr 2022 und
-#     was sich daraus über die Volatilität ableiten lässt."""
-# )
+st.title("Mythen zur Energiewende")
 
 st.write(
-    """
-Etwas vereinfacht gesagt ist das Ziel den Einsatz konventioneller Energieträger zu minimieren. Hierbei sind drei Fragen
-entscheidend:  
-    1. Wie viel Strom muss mit konventionellen Energieträgern produziert werden (Weil der Bedarf nicht durch
-    erneuerbare Energien gedeckt werden kann)?  
-    2. Über welche Zeiträume muss das Delta zwischen verfügbaren erneuerbaren Energien und dem Bedarf
-        zwischen verfügbaren erneuerbaren Energien und dem Bedarf
-    durch konventionelle Energieträger gedeckt werden?  
-    3. Wie viel installierte Leistung muss durch konventionelle Kraftwerke vorgehalten werden? Dies entspricht dem
-    maximalen Delta?  
-
-Des Weiteren gehen wir im Folgenden davon aus, dass erneuerbare Energien, wenn verfügbar immer eingespeist werden.
-Diese Annahme ist zutreffend, da sie die geringsten Marktpreise haben und somit teurere Alternativen aus dem
-Markt drängen (Merit Order).
-"""
+    '### "In Deutschland funktioniert die Produktion erneuerbarer Energien nur im Sommer. Im Winter sind wir dann doch wieder fast ausschließlich auf Kohle, Gas und Atomstrom angewiesen."'
 )
-
-st.write("## 1. Wie viel Strom muss mit konventionellen Energieträgern produziert werden?")
 st.write(
-    """Machen wir (die natürlich falsche) Annahme, dass erneuerbare Energien gratis, in unbeschränkten Mengen,
-    verlustfrei und beliebig lange gespeichert werden können ("perfekter Speicher").
-    In diesem Fall müsste man einfach nur die installierte Leistung der erneuerbaren Energien erhöhen, bis sie den Bedarf decken.
-    Im Jahr 2022 wurden 46,2% des Stroms aus erneuerbaren Energien gedeckt. 
-    """
+    """Möglicherweise ist dieser Mythos darauf zurückzuführen, dass wir alle wissen, wann die Sonne scheint.
+         Windstatistiken sind uns dabei deutlich weniger präsent.
+         """
 )
 series_total = df_renewable_vs_rest_stacked_hourly.groupby("Datum")["Petajoule"].sum()
 series_total = series_total.reset_index()
@@ -80,19 +47,10 @@ fig_solar_vs_total = px.line(
 )
 st.plotly_chart(fig_solar_vs_total)
 st.write(
-    """Solar ist eine volatile Energiequelle, da die Sonne nachts gar nicht und im Winter wenig scheint. Trotzdem zeigt
-    die Grafik, dass noch Kapazitäten zum Ausbau von Solar bestehen. Die Annahme des perfekten Speichers ist also
-    durchaus zielführend in einem frühen Stadium der grünen Transformation (in dem wir uns befinden). Mit zunehmendem
-    Ausbau der Erneuerbaren wird sie entsprechend unbrauchbarer, da überschüßiger Strom nicht eingespeißt werden kann.
     """
-)
-
-
-st.write("## 2.  Über welche Zeiträume muss das Delta gedeckt werden? ")
-st.write(
-    """Beim Blick auf Photovoltaik alleine (siehe oben) steht zu befürchten, dass über die kompletten Wintermonate das
-    Delta durch konventionelle Energieträger aufgefangen werden muss. Natürlich gibt es deutlich mehr erneuerbare
-    Energien, sehen wir uns also das komplette Bild an.
+    Wenig überraschend bringt Photovoltaik (Orange) im Winter wenig Ertrag, was dann
+    im Frühling zunimmt, im Sommer seinen Peak erreicht und im Herbst wieder abnimmt.  
+    Natürlich gibt es deutlich mehr erneuerbare Energien, sehen wir uns also das komplette Bild an.
     """
 )
 
@@ -118,13 +76,7 @@ fig_electricity_day_konventionell = px.area(
         ]
     },
 )
-# st.plotly_chart(fig_electricity_day_konventionell)
 
-# st.write(
-#     """
-#     In dieser Grafik ist die Stromerzeugung durch konventionelle Energieträger nochmals alleine abgebildet.
-# """
-# )
 fig_electricity_day = px.area(
     df_renewable_vs_rest_stacked_daily,
     x="Datum",
@@ -151,15 +103,11 @@ st.plotly_chart(fig_electricity_day)
 
 st.write(
     """Zu sehen ist die Stromerzeugung aggregiert über einen Tag pro Energieträger.
-    Zur Verbesserung der Übersichtlichkeit sind alle konventionellen Energieträger zusammengefasst (Pink).
-    Da die Daten über einen Tag aggregiert sind, lässt sich hier keine Aussage über Schwankungen
-    innerhalb eines Tages machen.  
+    Zur Verbesserung der Übersichtlichkeit sind alle konventionellen Energieträger zusammengefasst (Pink).  
     Am Boden des Graphen sind erneurbare Energien zu sehen wie z.B. Biomasse, die kontinuierlich Energie liefern.
-    Die Erneuerbaren fallen also nie auf Null.
-    Wenig überraschend bringt Photovoltaik (Orange) im Winter wenig Ertrag, was dann
-    im Frühling zunimmt, im Sommer seinen Peak erreicht und im Herbst wieder abnimmt. Der Wind (türkis und dunkelblau)
-    weht im Winter stärker als in den Sommermonaten.
-    Dies ist eine sehr gute Nachricht, da es bedeutet, dass die beiden Energieformen sich sehr gut ergänzen. Es bedeutet
+    Die Erneuerbaren **fallen also nie auf Null**.
+    Der Wind (türkis und dunkelblau) weht im Winter stärker als in den Sommermonaten.
+    Dies ist eine sehr gute Nachricht, da es bedeutet, **dass die beiden Energieformen sich sehr gut ergänzen**. Es bedeutet
     aber auch, dass man den Ausbau der Windenergie nicht vernachlässigen darf, wie es in Bayern und Baden-Württemberg
     sträflicherweise der Fall ist.
     """
@@ -201,7 +149,9 @@ st.write(
          und 11. Dezember waren jeweils 3 Tage mit besonders wenig Wind. Auch das durchschnittliche Windniveau
          war in diesem Zeitraum gering. Aus den Daten eines Jahres lässt sich natürlich nicht ablesen, wie oft das 
          vorkommt.
-         In jedem Fall stellen solche Perioden die Energiewende vor ihre größte Herausforderung.
+         In jedem Fall stellen solche Perioden die Energiewende vor ihre größte Herausforderung. Für diese Fälle werden
+         dann zukünftig grüne Gaskraftwerke benötigt. Aufgrund ihres geringen Wirkungsgrades sind diese i.d.R. zu teuer,
+         kämen aber in dieser Phase mangels Alternativen zum Einsatz.
          """
 )
 
@@ -236,5 +186,34 @@ st.write(
     """
     Dass Winter nicht gleichzusetzen ist mit wenig erneuerbaren Energien, zeigt der Februar eindrucksvoll, in dem viel
     Wind wehte und somit wesentlich weniger auf konventionelle Energieträger zurückgegriffen werden musste.
+
+    **Fazit:**
+    - Wind weht im Winter stärker als im Sommer, was sich mit Photovoltaik gut ergänzt.
+    - Die Erneuerbaren fallen nie auf Null (z.B. Biomasse).
+    - Die wohl größte Herausforderung bei der Energiewende sind längere, windarme Perioden im Winter. Möglicherweise 
+    wird dies bei der grünen Transformation die letzte Etappe. Es ist kein Grund, die Etappen davor nicht jetzt zu
+    beschreiten. 
+"""
+)
+
+st.write(
+    """
+    ### "Erneuerbare Energien sind sehr billig." bzw. "Erneuerbare Energien sind unbezahlbar."
+    Das Merit Order Prinzip bezeichnet den marktwirtschaftlichen Mechanismus, nachdem die günstigeren Energien,
+    wenn verfügbar die teureren Energien aus dem Markt drängen. Der Markpreis wird bestimmt durch das teuerste, aktuell
+    noch benötigte Kraftwerk. Wenn also der Wind weht und die Sonne scheint,
+    werden teurere Gas- und Kohlekraftwerke still gelegt. Der Strom ist in diesen Phasen günstig und grün.
+    Aktuell sind wir in Phasen ohne Wind und Sonne noch auf konventionelle Energieträger angewiesen. Mit 
+    fortschreitender grüner Transformation sollte dies abnehmen.  
+    **Fazit:** Beide Aussagen sind unzulässig verkürzt.
+    """
+)
+
+st.write("## Quellen:")
+st.write(
+    """
+[1]“Stromerzeugung 2022: Ein Drittel aus Kohle, ein Viertel aus Windkraft,” Statistisches Bundesamt. https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/03/PD23_090_43312.html
+
+‌
 """
 )

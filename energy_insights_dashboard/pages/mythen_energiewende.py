@@ -127,7 +127,7 @@ fig_electricity_hour_lacking = px.area(
     y="Petajoule",
     color="Energiekategorie",
     labels={"x": "Tag"},
-    title="Stromerzeugung pro Stunde <br><sup>Quelle: SMARD</sup>",
+    title="Stromerzeugung pro Stunde 2022 <br><sup>Quelle: SMARD</sup>",
     color_discrete_map=color_map,
     category_orders={
         "Energiekategorie": [
@@ -166,7 +166,7 @@ fig_electricity_hour_sufficient = px.area(
     y="Petajoule",
     color="Energiekategorie",
     labels={"x": "Tag"},
-    title="Stromerzeugung pro Stunde <br><sup>Quelle: SMARD</sup>",
+    title="Stromerzeugung pro Stunde 2022<br><sup>Quelle: SMARD</sup>",
     color_discrete_map=color_map,
     category_orders={
         "Energiekategorie": [
@@ -212,8 +212,6 @@ st.write(
 st.write("## Quellen:")
 st.write(
     """
-[1]“Stromerzeugung 2022: Ein Drittel aus Kohle, ein Viertel aus Windkraft,” Statistisches Bundesamt. https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/03/PD23_090_43312.html
-
-‌
+[1] SMARD | Marktdaten,” www.smard.de. https://www.smard.de/home/downloadcenter/download-marktdaten/ (accessed Nov. 4, 2023).
 """
 )

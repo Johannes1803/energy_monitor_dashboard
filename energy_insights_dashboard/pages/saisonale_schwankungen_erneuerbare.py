@@ -21,7 +21,7 @@ color_map = {
     "Wasserkraft": "#2E91E5",
 }
 
-st.title("Mythen zur Energiewende")
+st.title("Verfügbarkeit erneuerbarer Energien über die Jahreszeiten")
 
 st.write(
     '### "In Deutschland funktioniert die Produktion erneuerbarer Energien nur im Sommer. Im Winter sind wir dann doch wieder fast ausschließlich auf Kohle, Gas und Atomstrom angewiesen."'
@@ -194,19 +194,6 @@ st.write(
     wird dies bei der grünen Transformation die letzte Etappe. Es ist kein Grund, die Etappen davor nicht jetzt zu
     beschreiten. 
 """
-)
-
-st.write(
-    """
-    ### "Erneuerbare Energien sind sehr billig." bzw. "Erneuerbare Energien sind unbezahlbar."
-    Das Merit Order Prinzip bezeichnet den marktwirtschaftlichen Mechanismus, nachdem die günstigeren Energien,
-    wenn verfügbar die teureren Energien aus dem Markt drängen. Der Markpreis wird bestimmt durch das teuerste, aktuell
-    noch benötigte Kraftwerk. Wenn also der Wind weht und die Sonne scheint,
-    werden teurere Gas- und Kohlekraftwerke still gelegt. Der Strom ist in diesen Phasen günstig und grün.
-    Aktuell sind wir in Phasen ohne Wind und Sonne noch auf konventionelle Energieträger angewiesen. Mit 
-    fortschreitender grüner Transformation sollte dies abnehmen.  
-    **Fazit:** Beide Aussagen sind unzulässig verkürzt.
-    """
 )
 
 st.write("## Quellen:")
